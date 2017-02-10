@@ -14,19 +14,16 @@ angular.module('quoteBook').service('dataService', function(){
     return quotes;
   };
 
-  this.addData = function(newQuote, newAuthor){
-    if(newQuote && newAuthor){
-      quotes.push({
-        text: newQuote,
-        author: newAuthor
-      });
-    }
-  };
+  this.addData = function(newQuote){
+    if(newQuote.text && newQuote.author){
+      quotes.push(newQuote);
+      }
+    };
 
   this.removeData = function(string){
-    for (var text in quotes){
-      if (quotes[text].text === string){
-        delete quotes[text];
+    for (var i = 0; i < quotes.length; i++){
+      if(quotes[i].text === string){
+        quotes.splice(i, 1);
       }
     }
   };
